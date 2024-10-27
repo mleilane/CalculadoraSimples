@@ -103,6 +103,7 @@ namespace CalculadoraSimples
         
         if(adicao == true)
             {
+
                 // converte o valor de txtResultado em decimal e soma com o valor que foi digitado 1º e salvamos na variavel calculo
                 txtResultado.Text = Convert.ToString(Convert.ToDecimal(txtResultado.Text) + calculo); // no fim o valo e convertido em string
                 txtOperacao.Text += txtResultado.Text; // o campo operacao vai mostrar o valor que esta nele mais o resultado calculado
