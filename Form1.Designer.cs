@@ -32,7 +32,6 @@
             TxtResultado = new TextBox();
             BtnApagarTudo = new Button();
             BtnExcluirUltimo = new Button();
-            BtnPorcentagem = new Button();
             BtnDivisao = new Button();
             BtnMultiplicacao = new Button();
             BtnNove = new Button();
@@ -63,6 +62,7 @@
             TxtResultado.Size = new Size(371, 100);
             TxtResultado.TabIndex = 0;
             TxtResultado.TextAlign = HorizontalAlignment.Right;
+            TxtResultado.KeyPress += TxtResultado_KeyPress;
             // 
             // BtnApagarTudo
             // 
@@ -90,19 +90,7 @@
             BtnExcluirUltimo.TabIndex = 2;
             BtnExcluirUltimo.Text = "CE";
             BtnExcluirUltimo.UseVisualStyleBackColor = false;
-            // 
-            // BtnPorcentagem
-            // 
-            BtnPorcentagem.BackColor = SystemColors.WindowFrame;
-            BtnPorcentagem.FlatStyle = FlatStyle.Popup;
-            BtnPorcentagem.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            BtnPorcentagem.ForeColor = Color.FromArgb(255, 128, 0);
-            BtnPorcentagem.Location = new Point(197, 239);
-            BtnPorcentagem.Name = "BtnPorcentagem";
-            BtnPorcentagem.Size = new Size(75, 60);
-            BtnPorcentagem.TabIndex = 3;
-            BtnPorcentagem.Text = "%";
-            BtnPorcentagem.UseVisualStyleBackColor = false;
+            BtnExcluirUltimo.Click += BtnExcluirUltimo_Click;
             // 
             // BtnDivisao
             // 
@@ -110,12 +98,13 @@
             BtnDivisao.FlatStyle = FlatStyle.Popup;
             BtnDivisao.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             BtnDivisao.ForeColor = Color.FromArgb(255, 128, 0);
-            BtnDivisao.Location = new Point(303, 239);
+            BtnDivisao.Location = new Point(197, 239);
             BtnDivisao.Name = "BtnDivisao";
             BtnDivisao.Size = new Size(75, 60);
             BtnDivisao.TabIndex = 4;
             BtnDivisao.Text = "/";
             BtnDivisao.UseVisualStyleBackColor = false;
+            BtnDivisao.Click += BtnDivisao_Click;
             // 
             // BtnMultiplicacao
             // 
@@ -123,12 +112,13 @@
             BtnMultiplicacao.FlatStyle = FlatStyle.Popup;
             BtnMultiplicacao.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             BtnMultiplicacao.ForeColor = Color.FromArgb(255, 128, 0);
-            BtnMultiplicacao.Location = new Point(303, 318);
+            BtnMultiplicacao.Location = new Point(303, 239);
             BtnMultiplicacao.Name = "BtnMultiplicacao";
             BtnMultiplicacao.Size = new Size(75, 60);
             BtnMultiplicacao.TabIndex = 8;
             BtnMultiplicacao.Text = "x";
             BtnMultiplicacao.UseVisualStyleBackColor = false;
+            BtnMultiplicacao.Click += BtnMultiplicacao_Click;
             // 
             // BtnNove
             // 
@@ -178,12 +168,13 @@
             BtnSubtracao.FlatStyle = FlatStyle.Popup;
             BtnSubtracao.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             BtnSubtracao.ForeColor = Color.FromArgb(255, 128, 0);
-            BtnSubtracao.Location = new Point(303, 393);
+            BtnSubtracao.Location = new Point(303, 314);
             BtnSubtracao.Name = "BtnSubtracao";
             BtnSubtracao.Size = new Size(75, 60);
             BtnSubtracao.TabIndex = 12;
             BtnSubtracao.Text = "-";
             BtnSubtracao.UseVisualStyleBackColor = false;
+            BtnSubtracao.Click += BtnSubtracao_Click;
             // 
             // BtnSeis
             // 
@@ -233,7 +224,7 @@
             BtnAdicao.FlatStyle = FlatStyle.Popup;
             BtnAdicao.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             BtnAdicao.ForeColor = Color.FromArgb(255, 128, 0);
-            BtnAdicao.Location = new Point(303, 471);
+            BtnAdicao.Location = new Point(303, 392);
             BtnAdicao.Name = "BtnAdicao";
             BtnAdicao.Size = new Size(75, 60);
             BtnAdicao.TabIndex = 16;
@@ -289,9 +280,9 @@
             BtnIgual.FlatStyle = FlatStyle.Popup;
             BtnIgual.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             BtnIgual.ForeColor = SystemColors.ButtonFace;
-            BtnIgual.Location = new Point(303, 548);
+            BtnIgual.Location = new Point(303, 471);
             BtnIgual.Name = "BtnIgual";
-            BtnIgual.Size = new Size(75, 60);
+            BtnIgual.Size = new Size(75, 137);
             BtnIgual.TabIndex = 20;
             BtnIgual.Text = "=";
             BtnIgual.UseVisualStyleBackColor = false;
@@ -307,8 +298,9 @@
             BtnPonto.Name = "BtnPonto";
             BtnPonto.Size = new Size(75, 60);
             BtnPonto.TabIndex = 19;
-            BtnPonto.Text = ".";
+            BtnPonto.Text = ",";
             BtnPonto.UseVisualStyleBackColor = false;
+            BtnPonto.Click += BtnPonto_Click;
             // 
             // BtnZero
             // 
@@ -322,6 +314,7 @@
             BtnZero.TabIndex = 17;
             BtnZero.Text = "0";
             BtnZero.UseVisualStyleBackColor = false;
+            BtnZero.Click += BtnZero_Click;
             // 
             // TxtOperacao
             // 
@@ -358,7 +351,6 @@
             Controls.Add(BtnOito);
             Controls.Add(BtnSete);
             Controls.Add(BtnDivisao);
-            Controls.Add(BtnPorcentagem);
             Controls.Add(BtnExcluirUltimo);
             Controls.Add(BtnApagarTudo);
             Controls.Add(TxtResultado);
@@ -376,7 +368,6 @@
         private TextBox TxtResultado;
         private Button BtnApagarTudo;
         private Button BtnExcluirUltimo;
-        private Button BtnPorcentagem;
         private Button BtnDivisao;
         private Button BtnMultiplicacao;
         private Button BtnNove;
